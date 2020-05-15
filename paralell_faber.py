@@ -99,7 +99,7 @@ def ameba_login(driver, user_id, password):
         time.sleep(1)
     else:
         output("$abema$[{}][AmebaError] (Error.0)  ログインに失敗しました".format(now()), "ameba")
-        exit()
+        sys.exit()
 
 
 def ameba_tag_search(driver, tag):
@@ -195,7 +195,7 @@ def insta_login(driver, user_id, password):
         time.sleep(1)
     else:
         output("$insta$[{}][InstaError] (Error.0)  ログインに失敗しました".format(now()), "insta")
-        exit()
+        sys.exit()
 
 
 def insta_tag_search(driver, tag):
@@ -231,7 +231,8 @@ def insta_click_nice(driver):
     count = 0
     while count < random.randint(5, 8):
         try:
-            driver.find_element_by_css_selector(IF_BTN).click()
+            target = driver.find_element_by_css_selector(IF_BTN)
+            driver.execute_script("arguments[0].click();", target)
             user = driver.find_element_by_css_selector(IT_TXT).text
             output("$insta$[{}][InstaFab] {} の投稿をいいねしました".format(now(), user), "insta")
             count += 1

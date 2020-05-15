@@ -243,3 +243,119 @@ $insta$[2020年05月15日 22:19:44][InstaError] (Error.5) Message: no such windo
 from unknown error: web view not found
   (Session info: chrome=81.0.4044.138)
 
+$insta$[2020年05月15日 22:57:22] Instagramにアクセスしました
+$insta$[2020年05月15日 22:57:28] Instagramにログインしました
+$insta$[2020年05月15日 22:57:37] Instagramより、tagで検索を行いました [タグ: v]
+$insta$[2020年05月15日 22:57:48] 投稿をクリックしました
+$insta$[2020年05月15日 22:57:49][InstaFab] bts.piic の投稿をいいねしました
+$insta$[2020年05月15日 22:58:04][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 22:58:04] (Error.3) Message: element click intercepted: Element <span class="fr66n">...</span> is not clickable at point (454, 400). Other element would receive the click: <button class="aOOlW   HoLwm " tabindex="0">...</button>
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 22:58:15][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 22:58:15] (Error.3) Message: no such element: Unable to locate element: {"method":"css selector","selector":".fr66n"}
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 22:58:19][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 22:58:19] (Error.3) Message: element click intercepted: Element <span class="fr66n">...</span> is not clickable at point (306, 344). Other element would receive the click: <button class="aOOlW  bIiDR  " tabindex="0">...</button>
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 22:58:26][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 22:58:26] (Error.3) Message: element click intercepted: Element <span class="fr66n">...</span> is not clickable at point (454, 400). Other element would receive the click: <button class="aOOlW   HoLwm " tabindex="0">...</button>
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 22:58:33][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 22:58:33] (Error.3) Message: element click intercepted: Element <span class="fr66n">...</span> is not clickable at point (454, 400). Other element would receive the click: <button class="aOOlW   HoLwm " tabindex="0">...</button>
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:00:41] Instagramにアクセスしました
+$insta$[2020年05月15日 23:00:48] Instagramにログインしました
+$insta$[2020年05月15日 23:00:57] Instagramより、tagで検索を行いました [タグ: f]
+$insta$[2020年05月15日 23:01:08] 投稿をクリックしました
+$insta$[2020年05月15日 23:01:09][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:01:09] (Error.3) Message: no such element: Unable to locate element: {"method":"css selector","selector":".wp06b"}
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:01:19][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:01:19] (Error.3) Message: no such element: Unable to locate element: {"method":"css selector","selector":".wp06b"}
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:01:31][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:01:31] (Error.3) Message: no such element: Unable to locate element: {"method":"css selector","selector":".wp06b"}
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:01:45][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:01:45] (Error.3) Message: no such element: Unable to locate element: {"method":"css selector","selector":".wp06b"}
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:01:49][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:01:49] (Error.3) Message: no such element: Unable to locate element: {"method":"css selector","selector":".wp06b"}
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:02:02][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:02:02] (Error.3) Message: no such element: Unable to locate element: {"method":"css selector","selector":".wp06b"}
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:02:06][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:02:06] (Error.3) Message: no such element: Unable to locate element: {"method":"css selector","selector":".wp06b"}
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:02:10][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:02:10] (Error.3) Message: no such element: Unable to locate element: {"method":"css selector","selector":".wp06b"}
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:02:20][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:02:20] (Error.3) Message: no such element: Unable to locate element: {"method":"css selector","selector":".wp06b"}
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:02:29][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:02:29] (Error.3) Message: no such element: Unable to locate element: {"method":"css selector","selector":".wp06b"}
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:02:40] Instagramにアクセスしました
+$insta$[2020年05月15日 23:02:45] Instagramにログインしました
+$insta$[2020年05月15日 23:02:59] Instagramより、tagで検索を行いました [タグ: sa]
+$insta$[2020年05月15日 23:03:10] 投稿をクリックしました
+$insta$[2020年05月15日 23:03:11][InstaFab] thiagomarcosforever93 の投稿をいいねしました
+$insta$[2020年05月15日 23:03:26][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:03:26] (Error.3) Message: element click intercepted: Element <button class="wpO6b " type="button">...</button> is not clickable at point (454, 398). Other element would receive the click: <button class="aOOlW   HoLwm " tabindex="0">...</button>
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:03:35][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:03:35] (Error.3) Message: element click intercepted: Element <button class="wpO6b " type="button">...</button> is not clickable at point (454, 398). Other element would receive the click: <button class="aOOlW   HoLwm " tabindex="0">...</button>
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:03:45][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:03:45] (Error.3) Message: element click intercepted: Element <button class="wpO6b " type="button">...</button> is not clickable at point (454, 400). Other element would receive the click: <button class="aOOlW   HoLwm " tabindex="0">...</button>
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:03:55][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:03:55] (Error.3) Message: element click intercepted: Element <button class="wpO6b " type="button">...</button> is not clickable at point (454, 398). Other element would receive the click: <button class="aOOlW   HoLwm " tabindex="0">...</button>
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:04:00][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:04:00] (Error.3) Message: element click intercepted: Element <button class="wpO6b " type="button">...</button> is not clickable at point (454, 398). Other element would receive the click: <button class="aOOlW   HoLwm " tabindex="0">...</button>
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:04:03][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:04:03] (Error.3) Message: element click intercepted: Element <button class="wpO6b " type="button">...</button> is not clickable at point (454, 398). Other element would receive the click: <button class="aOOlW   HoLwm " tabindex="0">...</button>
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:04:07][InstaError] (Error.3) いいねでエラーが発生しました
+$insta$[2020年05月15日 23:04:07] (Error.3) Message: element click intercepted: Element <button class="wpO6b " type="button">...</button> is not clickable at point (454, 400). Other element would receive the click: <button class="aOOlW   HoLwm " tabindex="0">...</button>
+  (Session info: headless chrome=81.0.4044.138)
+
+$insta$[2020年05月15日 23:04:15] Instagramにアクセスしました
+$insta$[2020年05月15日 23:04:23] Instagramにログインしました
+$insta$[2020年05月15日 23:04:37] Instagramより、tagで検索を行いました [タグ: d]
+$insta$[2020年05月15日 23:04:47] 投稿をクリックしました
+$insta$[2020年05月15日 23:04:49][InstaFab] shaktiman.meme の投稿をいいねしました
+$insta$[2020年05月15日 23:05:02][InstaFab] modernistartist の投稿をいいねしました
+$insta$[2020年05月15日 23:05:14][InstaFab] iiinnnaaannniii の投稿をいいねしました
+$insta$[2020年05月15日 23:05:30][InstaFab] mmeminem_fanpage の投稿をいいねしました
+$insta$[2020年05月15日 23:05:44][InstaFab] hodossy_n の投稿をいいねしました
+$insta$[2020年05月15日 23:05:51][InstaFab] dgraneltransportes の投稿をいいねしました
+$insta$[2020年05月15日 23:06:03][InstaFab] sipanda_lelah の投稿をいいねしました
+$insta$[2020年05月15日 23:06:10][InstaFab] purewallpapers18 の投稿をいいねしました
+$insta$[421秒]待機します
+$insta$=======================================================$insta$
