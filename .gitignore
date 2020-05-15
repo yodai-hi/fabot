@@ -1,0 +1,6 @@
+confg/
+*.zip
+*.mov
+
+# Project exclude paths
+/venv/

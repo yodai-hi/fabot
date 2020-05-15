@@ -1,0 +1,22 @@
+{
+  "AMEBA_LOGIN_URL": "https://dauth.user.ameba.jp/login/ameba",
+  "AMEBA_TAG_URL": "https://blogtag.ameba.jp/detail/",
+  "AMEBA_USER_FORM": "accountId",
+  "AMEBA_PASS_FORM": "password",
+  "AMEBA_LOGIN_BTN": "c-btn--large",
+  "AMEBA_FAB_BTN": ".gjv927-3.bdVVAs",
+  "AMEBA_NEXT_BTN": ".sc-1oybyzg-3.gwbXsf",
+  "AMEBA_TITLE_TXT": ".sc-1xxq4vr-2.kvBZVK",
+  "AMEBA_FAILED_TXT": "c-form__error",
+  "INSTA_LOGIN_URL": "https://www.instagram.com/accounts/login/?source: auth_switcher",
+  "INSTA_TAG_URL": "https://www.instagram.com/explore/tags/",
+  "INSTA_USER_FORM": "username",
+  "INSTA_PASS_FORM": "password",
+  "INSTA_LOGIN_BTN": "L3NKy",
+  "INSTA_PHOTO_BTN": "_9AhH0",
+  "INSTA_NEXT_BTN": ".coreSpriteRightPaginationArrow",
+  "INSTA_FAB_BTN": ".fr66n",
+  "INSTA_BAD_BTN": ".FY9nT.fr66n",
+  "INSTA_TITLE_TXT": ".sqdOP.yWX7d._8A5w5.ZIAjV",
+  "INSTA_FAILED_TXT": "slfErrorAlert"
+}
