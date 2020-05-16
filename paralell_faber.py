@@ -1,5 +1,7 @@
+import copy
 import csv
 import datetime
+import glob
 import json
 import os
 import sys
@@ -15,6 +17,30 @@ import random
 
 
 ##############################################Utils#################################################
+
+
+def check_user_profile():
+    current_path = os.path.dirname(sys.argv[0])
+    usr1_path = os.path.join(current_path, 'config', 'profile1')
+    usr2_path = os.path.join(current_path, 'config', 'profile2')
+    profile1_path = os.path.join(usr1_path, 'Profile 1*')
+    profile2_path = os.path.join(usr2_path, 'Profile 1*')
+
+    if len(glob.glob(profile1_path)) == 0 or len(glob.glob(profile2_path)) == 0:
+        login_bot(usr1_path, usr2_path)
+
+    elif len(glob.glob(profile1_path)) == 1 and len(glob.glob(profile2_path)) != 1:
+        login_bot(usr1_path, "")
+
+    elif len(glob.glob(profile1_path)) != 1 and len(glob.glob(profile2_path)) == 1:
+        login_bot("", usr2_path)
+
+    if len(glob.glob(profile1_path)) == 1 and len(glob.glob(profile2_path)) == 1:
+        output("$login$[{}] Instagram, Ameba blogで自動ログインを行いました".format(now()), "LOGIN")
+        ameba = threading.Thread(target=ameba_bot)
+        insta = threading.Thread(target=insta_bot)
+        ameba.start()
+        insta.start()
 
 
 def read_file():
@@ -76,41 +102,96 @@ def scroll_down(driver):
         driver.execute_script("window.scrollTo(0, " + str(x) + ");")
 
 
+##############################################Login#################################################
+
+def login_bot(ameba_profile_path, insta_profile_path):
+    if ameba_profile_path != "":
+        ameba_profile_option = Options()  # オプションを用意
+        ameba_profile_option.add_argument("user-data-dir=" + ameba_profile_path)
+        driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=ameba_profile_option)
+        driver.get(L_URL)
+        val = input("Ameba blog用のアカウントを作り終えたら,OKと入力しEnterを押してください >>> ")
+
+        while True:
+            # User作成
+            if val == "OK":
+                driver.quit()
+                break
+
+        ameba_profile_option.add_argument("a-directory=Profile 1")
+        driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=ameba_profile_option)
+        output("$login$[{}] Ameba bolgにログインしてください".format(now()), "login")
+        # Ameba login tab
+        driver.get(AL_URL)
+        try:
+            ameba_login(driver)
+        except WebDriverException:
+            output("$abema$[{}][AmebaError] (Error.0) login入力でエラーが発生しました．手入力してください．".format(now()), "ameba")
+        val = input("ログインが完了したら,OKと入力しEnterを押してください >>> ")
+        while True:
+            # User作成
+            if val == "OK":
+                driver.quit()
+                break
+
+    if insta_profile_path != "":
+        insta_profile_option = Options()  # オプションを用意
+        insta_profile_option.add_argument("user-data-dir=" + insta_profile_path)
+        driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=insta_profile_option)
+        driver.get(L_URL)
+        val = input("Instagram用のアカウントを作り終えたら,OKと入力しEnterを押してください >>> ")
+
+        while True:
+            # User作成
+            if val == "OK":
+                driver.quit()
+                break
+
+        insta_profile_option.add_argument("a-directory=Profile 2")
+        driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=insta_profile_option)
+        output("$login$[{}] Instagramにログインしてください".format(now()), "login")
+        #Insta login tab
+        driver.get(IL_URL)
+        try:
+            insta_login(driver)
+        except WebDriverException:
+            output("$insta$[{}][InstaError] (Error.0) login入力でエラーが発生しました．手入力してください．".format(now()), "insta")
+
+        val = input("ログインが完了したら,OKと入力しEnterを押してください >>> ")
+        while True:
+            # User作成
+            if val == "OK":
+                driver.quit()
+                break
+
+    return
+
+
 ###########################################Abema Blog###############################################
 
 
-def ameba_login(driver, user_id, password):
+def ameba_login(driver):
     driver.get(AL_URL)
     output("$abema$[{}] ameba blogにアクセスしました".format(now()), "ameba")
     time.sleep(1)
 
     # メアドと、パスワードを入力
-    driver.find_element_by_name(AU_FORM).send_keys(user_id)
-    time.sleep(1)
-    driver.find_element_by_name(AP_FORM).send_keys(password)
-    time.sleep(1)
-
-    # ログインボタンを押す
-    driver.find_element_by_class_name(AL_BTN).click()
-    time.sleep(random.randint(2, 5))
-
-    if len(driver.find_elements_by_class_name(AF_TXT)) == 0:
-        output("$abema$[{}] ameba blogにログインしました".format(now()), "ameba")
+    if len(driver.find_elements_by_name(AU_FORM)) != 0:
+        driver.find_element_by_name(AU_FORM).send_keys(ameba_user_id)
         time.sleep(1)
-    else:
-        output("$abema$[{}][AmebaError] (Error.0)  ログインに失敗しました".format(now()), "ameba")
-        sys.exit()
+        driver.find_element_by_name(AP_FORM).send_keys(ameba_password)
+        time.sleep(1)
 
 
-def ameba_tag_search(driver, tag):
-    driver.get(AT_URL + tag)
+def ameba_tag_search(driver, ameba_tag):
+    driver.get(AT_URL + ameba_tag)
     time.sleep(random.randint(2, 10))
-    output("$abema$[{}] ameba blogより、tagで検索を行いました [タグ: {}]".format(now(), tag), "ameba")
+    output("$abema$[{}] ameba blogより、tagで検索を行いました [タグ: {}]".format(now(), ameba_tag), "ameba")
     time.sleep(1)
 
 
 def ameba_click_nice(driver):
-    for i in range(random.randint(1, 10)):
+    for i in range(random.randint(3, 8)):
         time.sleep(3)
         try:
             scroll_down(driver)
@@ -153,12 +234,14 @@ def ameba_click_nice(driver):
 def ameba_bot():
     while True:
         time.sleep(1)
+        option = Options()
+        current_path = os.path.dirname(sys.argv[0])
+        config_path = os.path.join(current_path, 'config', 'profile1')
+        option.add_argument("user-data-dir=" + config_path)
+        option.add_argument("profile-directory=Profile 1")
 
-        option = Options()  # オプションを用意
-        option.add_argument('--headless')
         driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=option)
 
-        ameba_login(driver, ameba_user_id, ameba_password)
         ameba_tag_search(driver, random.choice(ameba_tag_list))
         ameba_click_nice(driver)
 
@@ -175,27 +258,16 @@ def ameba_bot():
 ###########################################Instagram################################################
 
 
-def insta_login(driver, user_id, password):
+def insta_login(driver):
     driver.get(IL_URL)
     output("$insta$[{}] Instagramにアクセスしました".format(now()), "insta")
     time.sleep(1)
 
     # メアドと、パスワードを入力
-    driver.find_element_by_name(IU_FORM).send_keys(user_id)
+    driver.find_element_by_name(IU_FORM).send_keys(insta_user_id)
     time.sleep(1)
-    driver.find_element_by_name(IP_FORM).send_keys(password)
+    driver.find_element_by_name(IP_FORM).send_keys(insta_password)
     time.sleep(1)
-
-    # ログインボタンを押す
-    driver.find_element_by_class_name(IL_BTN).click()
-    time.sleep(random.randint(2, 5))
-
-    if len(driver.find_elements_by_id(IF_TXT)) == 0:
-        output("$insta$[{}] Instagramにログインしました".format(now()), "insta")
-        time.sleep(1)
-    else:
-        output("$insta$[{}][InstaError] (Error.0)  ログインに失敗しました".format(now()), "insta")
-        sys.exit()
 
 
 def insta_tag_search(driver, tag):
@@ -229,7 +301,7 @@ def insta_click_nice(driver):
         return
 
     count = 0
-    while count < random.randint(5, 8):
+    while count < random.randint(3, 8):
         try:
             target = driver.find_element_by_css_selector(IF_BTN)
             driver.execute_script("arguments[0].click();", target)
@@ -259,12 +331,14 @@ def insta_click_nice(driver):
 def insta_bot():
     while True:
         time.sleep(1)
+        option = Options()
+        current_path = os.path.dirname(sys.argv[0])
+        config_path = os.path.join(current_path, 'config', 'profile2')
+        option.add_argument("user-data-dir=" + config_path)
+        option.add_argument("profile-directory=Profile 1")
 
-        option = Options()  # オプションを用意
-        option.add_argument('--headless')
         driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=option)
 
-        insta_login(driver, insta_user_id, insta_password)
         insta_tag_search(driver, random.choice(insta_tag_list))
         insta_click_nice(driver)
 
@@ -280,6 +354,7 @@ def insta_bot():
 
 if __name__ == '__main__':
     read_env = read_env()
+    L_URL = read_env["LOGIN_URL"]
     AL_URL = read_env["AMEBA_LOGIN_URL"]
     AT_URL = read_env["AMEBA_TAG_URL"]
     AU_FORM = read_env["AMEBA_USER_FORM"]
@@ -310,9 +385,4 @@ if __name__ == '__main__':
     insta_user_id = config[0][1]
     insta_password = config[0][3]
 
-    ameba = threading.Thread(target=ameba_bot)
-    insta = threading.Thread(target=insta_bot)
-
-    # スレッドスタート
-    ameba.start()
-    insta.start()
+    check_user_profile()

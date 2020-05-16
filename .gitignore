@@ -1,6 +1,11 @@
 /confg/
+/build/
+/dist/
+/log/
+*.spec
 *.zip
 *.mov
+
 
 # Project exclude paths
 /venv/
