@@ -185,7 +185,7 @@ def ameba_login(driver):
 
 def ameba_tag_search(driver, ameba_tag):
     driver.get(AT_URL + ameba_tag)
-    time.sleep(random.randint(2, 10))
+    time.sleep(random.randint(4, 10))
     output("$abema$[{}] ameba blogより、tagで検索を行いました [タグ: {}]".format(now(), ameba_tag), "ameba")
     time.sleep(1)
 
@@ -234,14 +234,20 @@ def ameba_click_nice(driver):
 def ameba_bot():
     while True:
         time.sleep(1)
-        option = Options()
+
+        options = Options()
         current_path = os.path.dirname(sys.argv[0])
         config_path = os.path.join(current_path, 'config', 'profile1')
-        option.add_argument("user-data-dir=" + config_path)
-        option.add_argument("profile-directory=Profile 1")
+        # options.add_argument('--headless')
+        # options.add_argument('--disable-gpu')
+        # options.add_argument("--remote-debugging-port=45447")
+        # options.add_argument("--no-sandbox")
+        options.add_argument("--user-data-dir=" + config_path)
+        options.add_argument("--profile-directory=Profile 1")
 
-        driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=option)
+        driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=options)
         driver.minimize_window()
+
         ameba_tag_search(driver, random.choice(ameba_tag_list))
         ameba_click_nice(driver)
 
@@ -253,6 +259,7 @@ def ameba_bot():
         output("$abema$[" + str(ameba_sleep) + "秒]待機します", "ameba")
         output("$abema$=======================================================$abema$", "ameba")
         time.sleep(ameba_sleep)
+        is_make_driver = False
 
 
 ###########################################Instagram################################################
@@ -272,7 +279,7 @@ def insta_login(driver):
 
 def insta_tag_search(driver, tag):
     driver.get(IT_URL + tag)
-    time.sleep(random.randint(2, 10))
+    time.sleep(random.randint(4, 10))
     output("$insta$[{}] Instagramより、tagで検索を行いました [タグ: {}]".format(now(), tag), "insta")
     time.sleep(1)
 
@@ -331,13 +338,17 @@ def insta_click_nice(driver):
 def insta_bot():
     while True:
         time.sleep(1)
-        option = Options()
+        options = Options()
         current_path = os.path.dirname(sys.argv[0])
         config_path = os.path.join(current_path, 'config', 'profile2')
-        option.add_argument("user-data-dir=" + config_path)
-        option.add_argument("profile-directory=Profile 1")
+        # options.add_argument('--headless')
+        # options.add_argument('--disable-gpu')
+        # options.add_argument("--remote-debugging-port=45447")
+        # options.add_argument("--no-sandbox")
+        options.add_argument("--user-data-dir=" + config_path)
+        options.add_argument("--profile-directory=Profile 1")
 
-        driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=option)
+        driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=options)
         driver.minimize_window()
 
         insta_tag_search(driver, random.choice(insta_tag_list))
