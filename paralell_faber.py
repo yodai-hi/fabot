@@ -241,7 +241,7 @@ def ameba_bot():
         option.add_argument("profile-directory=Profile 1")
 
         driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=option)
-
+        driver.minimize_window()
         ameba_tag_search(driver, random.choice(ameba_tag_list))
         ameba_click_nice(driver)
 
@@ -338,6 +338,7 @@ def insta_bot():
         option.add_argument("profile-directory=Profile 1")
 
         driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=option)
+        driver.minimize_window()
 
         insta_tag_search(driver, random.choice(insta_tag_list))
         insta_click_nice(driver)
