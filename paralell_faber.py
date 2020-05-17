@@ -1,4 +1,3 @@
-import copy
 import csv
 import datetime
 import glob
@@ -7,6 +6,7 @@ import os
 import sys
 import threading
 from os.path import join
+import encodings.idna
 
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
@@ -163,7 +163,6 @@ def login_bot(ameba_profile_path, insta_profile_path):
             if val == "OK":
                 driver.quit()
                 break
-
     return
 
 
@@ -191,7 +190,7 @@ def ameba_tag_search(driver, ameba_tag):
 
 
 def ameba_click_nice(driver):
-    for i in range(random.randint(3, 8)):
+    for i in range(random.randint(2, 5)):
         time.sleep(3)
         try:
             scroll_down(driver)
@@ -232,26 +231,28 @@ def ameba_click_nice(driver):
 
 
 def ameba_bot():
+    options = Options()
+    current_path = os.path.dirname(sys.argv[0])
+    config_path = os.path.join(current_path, 'config', 'profile1')
+    # options.add_argument('--headless')
+    # options.add_argument('--disable-gpu')
+    # options.add_argument("--remote-debugging-port=45447")
+    # options.add_argument("--no-sandbox")
+    options.add_argument("--user-data-dir=" + config_path)
+    options.add_argument("--profile-directory=Profile 1")
+
     while True:
         time.sleep(1)
-
-        options = Options()
-        current_path = os.path.dirname(sys.argv[0])
-        config_path = os.path.join(current_path, 'config', 'profile1')
-        # options.add_argument('--headless')
-        # options.add_argument('--disable-gpu')
-        # options.add_argument("--remote-debugging-port=45447")
-        # options.add_argument("--no-sandbox")
-        options.add_argument("--user-data-dir=" + config_path)
-        options.add_argument("--profile-directory=Profile 1")
 
         driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=options)
         driver.minimize_window()
 
         ameba_tag_search(driver, random.choice(ameba_tag_list))
         ameba_click_nice(driver)
+        driver.get("https://www.google.co.jp/")
 
         driver.close()
+        driver.quit()
 
         # 20s ~ 20min
         ameba_sleep = random.randint(random.randint(20, 100), random.randint(120, 1200))
@@ -259,7 +260,6 @@ def ameba_bot():
         output("$abema$[" + str(ameba_sleep) + "秒]待機します", "ameba")
         output("$abema$=======================================================$abema$", "ameba")
         time.sleep(ameba_sleep)
-        is_make_driver = False
 
 
 ###########################################Instagram################################################
@@ -279,7 +279,7 @@ def insta_login(driver):
 
 def insta_tag_search(driver, tag):
     driver.get(IT_URL + tag)
-    time.sleep(random.randint(4, 10))
+    time.sleep(random.randint(2, 5))
     output("$insta$[{}] Instagramより、tagで検索を行いました [タグ: {}]".format(now(), tag), "insta")
     time.sleep(1)
 
@@ -308,7 +308,7 @@ def insta_click_nice(driver):
         return
 
     count = 0
-    while count < random.randint(3, 8):
+    while count < random.randint(3, 5):
         try:
             target = driver.find_element_by_css_selector(IF_BTN)
             driver.execute_script("arguments[0].click();", target)
@@ -336,25 +336,26 @@ def insta_click_nice(driver):
 
 
 def insta_bot():
+    options = Options()
+    current_path = os.path.dirname(sys.argv[0])
+    config_path = os.path.join(current_path, 'config', 'profile2')
+    # options.add_argument('--headless')
+    # options.add_argument('--disable-gpu')
+    # options.add_argument("--remote-debugging-port=45447")
+    # options.add_argument("--no-sandbox")
+    options.add_argument("--user-data-dir=" + config_path)
+    options.add_argument("--profile-directory=Profile 1")
+
     while True:
         time.sleep(1)
-        options = Options()
-        current_path = os.path.dirname(sys.argv[0])
-        config_path = os.path.join(current_path, 'config', 'profile2')
-        # options.add_argument('--headless')
-        # options.add_argument('--disable-gpu')
-        # options.add_argument("--remote-debugging-port=45447")
-        # options.add_argument("--no-sandbox")
-        options.add_argument("--user-data-dir=" + config_path)
-        options.add_argument("--profile-directory=Profile 1")
 
         driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=options)
         driver.minimize_window()
-
         insta_tag_search(driver, random.choice(insta_tag_list))
         insta_click_nice(driver)
-
+        driver.get("https://www.google.co.jp/")
         driver.close()
+        driver.quit()
 
         # 20s ~ 20min
         insta_sleep = random.randint(random.randint(20, 100), random.randint(120, 1200))
