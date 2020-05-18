@@ -6,7 +6,6 @@ import os
 import sys
 import threading
 from os.path import join
-import encodings.idna
 
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
@@ -58,8 +57,8 @@ def read_env():
     current_path = os.path.dirname(sys.argv[0])
     json_path = join(current_path, 'config', 'setting.json')
 
-    json_open = open(json_path, 'r')
-    json_load = json.load(json_open)
+    with open(json_path, 'r') as f:
+        json_load = json.load(f)
 
     return json_load
 
@@ -74,14 +73,12 @@ def output(message, sns_type):
     insta_config_path = join(current_path, 'log', 'insta_log.txt')
 
     if sns_type == "ameba":
-        file = open(ameba_config_path, 'a')
-        file.write(message + "\n")
-        file.close()
+        with open(ameba_config_path, 'a') as file:
+            file.write(message + "\n")
 
-    if sns_type == "insta":
-        file = open(insta_config_path, 'a')
-        file.write(message + "\n")
-        file.close()
+    elif sns_type == "insta":
+        with open(insta_config_path, 'a') as file:
+            file.write(message + "\n")
 
     print(message)
 
@@ -234,10 +231,6 @@ def ameba_bot():
     options = Options()
     current_path = os.path.dirname(sys.argv[0])
     config_path = os.path.join(current_path, 'config', 'profile1')
-    # options.add_argument('--headless')
-    # options.add_argument('--disable-gpu')
-    # options.add_argument("--remote-debugging-port=45447")
-    # options.add_argument("--no-sandbox")
     options.add_argument("--user-data-dir=" + config_path)
     options.add_argument("--profile-directory=Profile 1")
 
@@ -322,15 +315,16 @@ def insta_click_nice(driver):
             else:
                 output("$insta$[{}][InstaError] (Error.3) いいねでエラーが発生しました".format(now()), "insta")
                 output("$insta$[{}] (Error.3) {}".format(now(), e), "insta")
+                return
 
         try:
             target = driver.find_element_by_css_selector(IN_BTN)
             driver.execute_script("arguments[0].click();", target)
-            # output("$insta$[{}] 次の投稿へ移動しました".format(now()), "insta")
+            time.sleep(5)
         except WebDriverException as e:
             output("$insta$[{}][InstaError] (Error.5) 投稿の移動でエラーが発生しました".format(now()), "insta")
             output("$insta$[{}][InstaError] (Error.5) {}".format(now(), e), "insta")
-            time.sleep(5)
+            return
 
         time.sleep(random.randint(random.randint(2, 5), random.randint(10, 15)))
 
@@ -339,10 +333,6 @@ def insta_bot():
     options = Options()
     current_path = os.path.dirname(sys.argv[0])
     config_path = os.path.join(current_path, 'config', 'profile2')
-    # options.add_argument('--headless')
-    # options.add_argument('--disable-gpu')
-    # options.add_argument("--remote-debugging-port=45447")
-    # options.add_argument("--no-sandbox")
     options.add_argument("--user-data-dir=" + config_path)
     options.add_argument("--profile-directory=Profile 1")
 
