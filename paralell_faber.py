@@ -105,7 +105,8 @@ def login_bot(ameba_profile_path, insta_profile_path):
     if ameba_profile_path != "":
         ameba_profile_option = Options()  # オプションを用意
         ameba_profile_option.add_argument("user-data-dir=" + ameba_profile_path)
-        driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=ameba_profile_option)
+        driver = webdriver.Chrome(resource_path("./driver/chromedriver"),
+                                  options=ameba_profile_option)
         driver.get(L_URL)
         val = input("Ameba blog用のアカウントを作り終えたら,OKと入力しEnterを押してください >>> ")
 
@@ -116,14 +117,16 @@ def login_bot(ameba_profile_path, insta_profile_path):
                 break
 
         ameba_profile_option.add_argument("a-directory=Profile 1")
-        driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=ameba_profile_option)
+        driver = webdriver.Chrome(resource_path("./driver/chromedriver"),
+                                  options=ameba_profile_option)
         output("$login$[{}] Ameba bolgにログインしてください".format(now()), "login")
         # Ameba login tab
         driver.get(AL_URL)
         try:
             ameba_login(driver)
         except WebDriverException:
-            output("$abema$[{}][AmebaError] (Error.0) login入力でエラーが発生しました．手入力してください．".format(now()), "ameba")
+            output("$abema$[{}][AmebaError] (Error.0) login入力でエラーが発生しました．手入力してください．".format(now()),
+                   "ameba")
         val = input("ログインが完了したら,OKと入力しEnterを押してください >>> ")
         while True:
             # User作成
@@ -134,7 +137,8 @@ def login_bot(ameba_profile_path, insta_profile_path):
     if insta_profile_path != "":
         insta_profile_option = Options()  # オプションを用意
         insta_profile_option.add_argument("user-data-dir=" + insta_profile_path)
-        driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=insta_profile_option)
+        driver = webdriver.Chrome(resource_path("./driver/chromedriver"),
+                                  options=insta_profile_option)
         driver.get(L_URL)
         val = input("Instagram用のアカウントを作り終えたら,OKと入力しEnterを押してください >>> ")
 
@@ -145,14 +149,16 @@ def login_bot(ameba_profile_path, insta_profile_path):
                 break
 
         insta_profile_option.add_argument("a-directory=Profile 2")
-        driver = webdriver.Chrome(resource_path("./driver/chromedriver"), options=insta_profile_option)
+        driver = webdriver.Chrome(resource_path("./driver/chromedriver"),
+                                  options=insta_profile_option)
         output("$login$[{}] Instagramにログインしてください".format(now()), "login")
-        #Insta login tab
+        # Insta login tab
         driver.get(IL_URL)
         try:
             insta_login(driver)
         except WebDriverException:
-            output("$insta$[{}][InstaError] (Error.0) login入力でエラーが発生しました．手入力してください．".format(now()), "insta")
+            output("$insta$[{}][InstaError] (Error.0) login入力でエラーが発生しました．手入力してください．".format(now()),
+                   "insta")
 
         val = input("ログインが完了したら,OKと入力しEnterを押してください >>> ")
         while True:
